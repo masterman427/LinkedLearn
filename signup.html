@@ -90,29 +90,6 @@
         <p>Already have an account? <a href="signin.html">Sign In</a></p>
     </div>
 
-    <script>
-        document.getElementById('signup-form').addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData.entries());
 
-            try {
-                const response = await fetch('http://localhost:5000/signup', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                const result = await response.json();
-                if (response.ok) {
-                    window.location.href = 'signin.html';
-                } else {
-                    alert(result.message);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again.');
-            }
-        });
-    </script>
 </body>
 </html>
