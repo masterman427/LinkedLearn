@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Themed Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0288d1; /* Blue background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signin-container {
+            background-color: #ffffff; /* White background for contrast */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .signin-container h2 {
+            margin-bottom: 20px;
+            color: #0288d1; /* Primary blue color for text */
+        }
+
+        .signin-container input[type="email"],
+        .signin-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .signin-container input[type="email"]:focus,
+        .signin-container input[type="password"]:focus {
+            border-color: #0288d1; /* Blue border on focus */
+            outline: none;
+        }
+
+        .signin-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0288d1; /* Blue button */
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .signin-container button:hover {
+            background-color: #0277bd; /* Darker blue on hover */
+        }
+
+        .signin-container p {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .signin-container a {
+            color: #0288d1; /* Blue links */
+            text-decoration: none;
+        }
+
+        .signin-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signin-container">
+        <h2>Sign In</h2>
+        <form action="http://localhost:5000/signin" method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Sign In</button>
+        </form>
+        <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+    <script>
+        document.getElementById('signin-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('http://localhost:5000/signin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    alert('Sign In Successful');
+                    console.log('Token:', result.token); // Store token for authenticated requests
+                } else {
+                    alert(result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
+
+</body>
+</html>
