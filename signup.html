@@ -79,7 +79,6 @@
     </style>
 </head>
 <body>
-
     <div class="signup-container">
         <h2>Sign Up</h2>
         <form id="signup-form">
@@ -105,16 +104,15 @@
                 });
                 const result = await response.json();
                 if (response.ok) {
-                    // Redirect to sign-in page upon successful sign-up
                     window.location.href = 'signin.html';
                 } else {
                     alert(result.message);
                 }
             } catch (error) {
                 console.error('Error:', error);
+                alert('An error occurred. Please try again.');
             }
         });
     </script>
-
 </body>
 </html>
