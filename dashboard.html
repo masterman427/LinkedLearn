@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Buddy Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            color: #0277bd;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #0288d1;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            background-color: #01579b;
+            padding: 10px 0;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-size: 16px;
+        }
+
+        .nav a:hover {
+            background-color: #0277bd;
+            border-radius: 5px;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .profile {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile h1 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            margin-top: 20px;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        .profile-info p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .btn {
+            background-color: #0288d1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0277bd;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .section h2 {
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        .study-buddies, .events, .tasks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .buddy, .event, .task {
+            background-color: #f1f8e9;
+            border: 1px solid #c5e1a5;
+            border-radius: 5px;
+            padding: 15px;
+            flex: 1 1 calc(33% - 20px);
+            box-sizing: border-box;
+        }
+
+        .buddy h3, .event h3, .task h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .footer {
+            background-color: #0288d1;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Study Buddy Dashboard</h1>
+    </div>
+    <div class="nav">
+        <a href="home.html">Home</a>
+        <a href="find-buddies.html">Find Buddies</a>
+        <a href="profile.html">My Profile</a>
+        <a href="messages.html">Messages</a>
+        <a href="survey.html">Surveys</a>
+        <a href="home.html">Logout</a>
+    </div>
+    <div class="container">
+        <div class="profile">
+            <img src="profile-placeholder.png" alt="Profile Picture">
+            <h1>John Doe</h1>
+            <div class="profile-info">
+                <p><strong>Email:</strong> john.doe@example.com</p>
+                <p><strong>Major:</strong> Computer Science</p>
+                <p><strong>Interests:</strong> Programming, Data Science, Machine Learning</p>
+            </div>
+            <a href="edit-profile.html" class="btn">Edit Profile</a>
+        </div>
+
+        <div class="section study-buddies">
+            <h2>Study Buddies</h2>
+            <div class="buddy">
+                <h3>Alice Smith</h3>
+                <p><strong>Major:</strong> Mathematics</p>
+                <p><strong>Interests:</strong> Algebra, Calculus</p>
+            </div>
+            <div class="buddy">
+                <h3>Bob Johnson</h3>
+                <p><strong>Major:</strong> Physics</p>
+                <p><strong>Interests:</strong> Quantum Mechanics, Thermodynamics</p>
+            </div>
+            <!-- Add more buddy elements as needed -->
+        </div>
+
+        <div class="section events">
+            <h2>Upcoming Events</h2>
+            <div class="event">
+                <h3>Study Group Meeting</h3>
+                <p><strong>Date:</strong> August 25, 2024</p>
+                <p><strong>Location:</strong> Library, Room 3</p>
+            </div>
+            <div class="event">
+                <h3>Data Science Workshop</h3>
+                <p><strong>Date:</strong> September 5, 2024</p>
+                <p><strong>Location:</strong> Online</p>
+            </div>
+            <!-- Add more event elements as needed -->
+        </div>
+
+        <div class="section tasks">
+            <h2>To-Do List</h2>
+            <div class="task">
+                <h3>Complete Homework Assignment</h3>
+                <p><strong>Due Date:</strong> August 30, 2024</p>
+            </div>
+            <div class="task">
+                <h3>Prepare for Midterm Exam</h3>
+                <p><strong>Due Date:</strong> September 10, 2024</p>
+            </div>
+            <!-- Add more task elements as needed -->
+        </div>
+    </div>
+
+</body>
+</html>

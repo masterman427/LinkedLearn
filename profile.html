@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #1e90ff;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+        .profile-container {
+            max-width: 1000px;
+            margin: 2em auto;
+            padding: 1em;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #1e90ff;
+            padding-bottom: 1em;
+            margin-bottom: 1em;
+        }
+        .profile-header img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 1em;
+        }
+        .profile-header h1 {
+            margin: 0;
+            color: #1e90ff;
+        }
+        .profile-header h2 {
+            margin: 0;
+            color: #555;
+        }
+        .section {
+            margin-bottom: 2em;
+        }
+        .section h3 {
+            margin-top: 0;
+            color: #1e90ff;
+        }
+        .section p {
+            margin: 0.5em 0;
+        }
+        .form-group {
+            margin-bottom: 1em;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5em;
+            color: #555;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group button {
+            background-color: #1e90ff;
+            color: #fff;
+            border: none;
+            padding: 0.7em 1.2em;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #4682b4;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 1em;
+            background-color: #ddd;
+            color: #333;
+            padding: 0.7em 1.2em;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #ccc;
+        }
+        .social-links a {
+            text-decoration: none;
+            color: #1e90ff;
+            margin-right: 1em;
+        }
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Study Buddy Finder</h1>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Profile Picture" id="profilePic">
+            <div>
+                <h1 id="name">John Doe</h1>
+                <h2 id="location">New York</h2>
+                <p><strong>Availability:</strong> <span id="availability">Morning</span></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Bio</h3>
+            <p id="bio">Computer Science major interested in artificial intelligence and machine learning.</p>
+        </div>
+
+        <div class="section">
+            <h3>Interests</h3>
+            <p id="interests">Artificial Intelligence, Machine Learning</p>
+        </div>
+
+        <div class="section">
+            <h3>Education</h3>
+            <p id="education">BSc in Computer Science</p>
+        </div>
+
+        <div class="section">
+            <h3>Recent Activities</h3>
+            <p id="activities">- Attended AI Conference 2024<br>- Completed ML course on Coursera</p>
+        </div>
+
+        <div class="section">
+            <h3>Contact</h3>
+            <p><strong>Email:</strong> <a href="mailto:johndoe@gmail.com" id="contact">johndoe@gmail.com</a></p>
+            <div class="social-links">
+                <h3>Social Media</h3>
+                <a href="https://twitter.com/johndoe" target="_blank">Twitter</a>
+                <a href="https://linkedin.com/in/johndoe" target="_blank">LinkedIn</a>
+                <a href="https://github.com/johndoe" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Update Profile</h3>
+            <form id="updateForm">
+                <div class="form-group">
+                    <label for="profilePicInput">Profile Picture URL:</label>
+                    <input type="text" id="profilePicInput" placeholder="Enter new profile picture URL">
+                </div>
+                <div class="form-group">
+                    <label for="nameInput">Name:</label>
+                    <input type="text" id="nameInput" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="bioInput">Bio:</label>
+                    <textarea id="bioInput" rows="4" placeholder="Enter a brief bio about yourself"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="interestsInput">Interests:</label>
+                    <input type="text" id="interestsInput" placeholder="Enter your interests">
+                </div>
+                <div class="form-group">
+                    <label for="educationInput">Education:</label>
+                    <input type="text" id="educationInput" placeholder="Enter your education">
+                </div>
+                <div class="form-group">
+                    <label for="locationInput">Location:</label>
+                    <input type="text" id="locationInput" placeholder="Enter your location">
+                </div>
+                <div class="form-group">
+                    <label for="availabilityInput">Availability:</label>
+                    <input type="text" id="availabilityInput" placeholder="Enter your availability">
+                </div>
+                <div class="form-group">
+                    <label for="contactInput">Contact Email:</label>
+                    <input type="email" id="contactInput" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="twitterInput">Twitter URL:</label>
+                    <input type="text" id="twitterInput" placeholder="Enter your Twitter URL">
+                </div>
+                <div class="form-group">
+                    <label for="linkedinInput">LinkedIn URL:</label>
+                    <input type="text" id="linkedinInput" placeholder="Enter your LinkedIn URL">
+                </div>
+                <div class="form-group">
+                    <label for="githubInput">GitHub URL:</label>
+                    <input type="text" id="githubInput" placeholder="Enter your GitHub URL">
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="updateProfile()">Update Profile</button>
+                </div>
+            </form>
+        </div>
+
+        <a href="dashboard.html" class="back-button">Back to Dashboard</a>
+    </div>
+
+    <script>
+        // Simulated user data
+        const userData = {
+            profilePic: 'https://randomuser.me/api/portraits/men/1.jpg',
+            name: 'John Doe',
+            bio: 'Computer Science major interested in artificial intelligence and machine learning.',
+            interests: 'Artificial Intelligence, Machine Learning',
+            education: 'BSc in Computer Science',
+            location: 'New York',
+            availability: 'Morning',
+            contact: 'johndoe@gmail.com',
+            twitter: 'https://twitter.com/johndoe',
+            linkedin: 'https://linkedin.com/in/johndoe',
+            github: 'https://github.com/johndoe',
+            activities: '- Attended AI Conference 2024<br>- Completed ML course on Coursera'
+        };
+
+        // Function to update profile information
+        function updateProfile() {
+            const profilePicInput = document.getElementById('profilePicInput').value;
+            const nameInput = document.getElementById('nameInput').value;
+            const bioInput = document.getElementById('bioInput').value;
+            const interestsInput = document.getElementById('interestsInput').value;
+            const educationInput = document.getElementById('educationInput').value;
+            const locationInput = document.getElementById('locationInput').value;
+            const availabilityInput = document.getElementById('availabilityInput').value;
+            const contactInput = document.getElementById('contactInput').value;
+            const twitterInput = document.getElementById('twitterInput').value;
+            const linkedinInput = document.getElementById('linkedinInput').value;
+            const githubInput = document.getElementById('githubInput').value;
+
+            if (profilePicInput) userData.profilePic = profilePicInput;
+            if (nameInput) userData.name = nameInput;
+            if (bioInput) userData.bio = bioInput;
+            if (interestsInput) userData.interests = interestsInput;
+            if (educationInput) userData.education = educationInput;
+            if (locationInput) userData.location = locationInput;
+            if (availabilityInput) userData.availability = availabilityInput;
+            if (contactInput) userData.contact = contactInput;
+            if (twitterInput) userData.twitter = twitterInput;
+            if (linkedinInput) userData.linkedin = linkedinInput;
+            if (githubInput) userData.github = githubInput;
+
+            document.getElementById('profilePic').src = userData.profilePic;
+            document.getElementById('name').textContent = userData.name;
+            document.getElementById('bio').textContent = userData.bio;
+            document.getElementById('interests').textContent = userData.interests;
+            document.getElementById('education').textContent = userData.education;
+            document.getElementById('location').textContent = userData.location;
+            document.getElementById('availability').textContent = userData.availability;
+            document.getElementById('contact').textContent = userData.contact;
+            document.getElementById('contact').href = `mailto:${userData.contact}`;
+            document.querySelector('.social-links a[href*="twitter"]').href = userData.twitter;
+            document.querySelector('.social-links a[href*="linkedin"]').href = userData.linkedin;
+            document.querySelector('.social-links a[href*="github"]').href = userData.github;
+            document.getElementById('activities').innerHTML = userData.activities;
+        }
+
+        // Load user data on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('profilePic').src = userData.profilePic;
+            document.getElementById('name').textContent = userData.name;
+            document.getElementById('bio').textContent = userData.bio;
+            document.getElementById('interests').textContent = userData.interests;
+            document.getElementById('education').textContent = userData.education;
+            document.getElementById('location').textContent = userData.location;
+            document.getElementById('availability').textContent = userData.availability;
+            document.getElementById('contact').textContent = userData.contact;
+            document.getElementById('contact').href = `mailto:${userData.contact}`;
+            document.querySelector('.social-links a[href*="twitter"]').href = userData.twitter;
+            document.querySelector('.social-links a[href*="linkedin"]').href = userData.linkedin;
+            document.querySelector('.social-links a[href*="github"]').href = userData.github;
+            document.getElementById('activities').innerHTML = userData.activities;
+        });
+    </script>
+</body>
+</html>

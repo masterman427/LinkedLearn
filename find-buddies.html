@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Study Buddies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-container input {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-container button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+        .profile-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-card img {
+            border-radius: 50%;
+            width: 125px; /* Adjusted size */
+            height: 125px; /* Adjusted size */
+        }
+        .profile-card h3 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .profile-card p {
+            margin: 5px 0;
+        }
+        #chatbox {
+            display: none;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 300px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #chatboxHeader {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            font-size: 1.2em;
+        }
+        #chatboxBody {
+            padding: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        #chatboxFooter {
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+        #chatboxFooter input {
+            width: calc(100% - 110px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #chatboxFooter button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #chatboxFooter button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="nameSearch" placeholder="Search by Name" />
+            <input type="text" id="interestSearch" placeholder="Search by Interests" />
+            <input type="text" id="educationSearch" placeholder="Search by Education" />
+            <input type="text" id="locationSearch" placeholder="Search by Location" />
+            <button onclick="searchProfiles()">Search</button>
+        </div>
+        <a href="dashboard.html" style="
+        display: inline-block;
+        background-color: #004d40;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        text-align: center;
+        border: 1px solid #004d40;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    " onmouseover="this.style.backgroundColor='#00332b'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.3)';" onmouseout="this.style.backgroundColor='#004d40'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.2)';">
+        Return to Dashboard
+    </a>
+        <div id="profileGrid"></div>
+    </div>
+
+    <div id="chatbox">
+        <div id="chatboxHeader">Chat with</div>
+        <div id="chatboxBody"></div>
+        <div id="chatboxFooter">
+            <input type="text" id="chatMessage" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Example profiles
+        const profiles = [
+            { name: 'Alice Johnson', image: 'https://randomuser.me/api/portraits/women/1.jpg', description: 'Biology major with a focus on genetics.', interests: 'Genetics, Evolution', education: 'BSc in Biology', location: 'New York', availability: 'Morning', contact: 'alice.johnson@gmail.com' },
+            { name: 'Bob Smith', image: 'https://randomuser.me/api/portraits/men/1.jpg', description: 'Computer Science student interested in machine learning.', interests: 'Machine Learning, AI', education: 'BSc in Computer Science', location: 'San Francisco', availability: 'Afternoon', contact: 'bob.smith@hotmail.com' },
+            { name: 'Charlie Brown', image: 'https://randomuser.me/api/portraits/men/2.jpg', description: 'Engineering student with a passion for robotics.', interests: 'Robotics, Engineering', education: 'BEng in Robotics', location: 'Los Angeles', availability: 'Evening', contact: 'charlie.brown@gmail.com' },
+            { name: 'Diana Prince', image: 'https://randomuser.me/api/portraits/women/2.jpg', description: 'History major focusing on ancient civilizations.', interests: 'Ancient History, Archaeology', education: 'BA in History', location: 'Chicago', availability: 'Morning', contact: 'diana.prince@gmail.com' },
+            { name: 'Ethan Hunt', image: 'https://randomuser.me/api/portraits/men/3.jpg', description: 'Chemistry major with a focus on organic chemistry.', interests: 'Organic Chemistry, Research', education: 'BSc in Chemistry', location: 'Houston', availability: 'Afternoon', contact: 'ethan.hunt@gmail.com' },
+            { name: 'Fiona Gallagher', image: 'https://randomuser.me/api/portraits/women/3.jpg', description: 'Mathematics major interested in applied mathematics.', interests: 'Applied Mathematics, Statistics', education: 'BSc in Mathematics', location: 'Philadelphia', availability: 'Evening', contact: 'fiona.gallagher@hotmail.com' },
+            { name: 'George Clooney', image: 'https://randomuser.me/api/portraits/men/4.jpg', description: 'Political Science major focusing on international relations.', interests: 'International Relations, Diplomacy', education: 'BA in Political Science', location: 'Phoenix', availability: 'Morning', contact: 'george.clooney@gmail.com' },
+            { name: 'Hannah Simone', image: 'https://randomuser.me/api/portraits/women/4.jpg', description: 'Psychology major with an interest in clinical psychology.', interests: 'Clinical Psychology, Counseling', education: 'MSc in Psychology', location: 'San Antonio', availability: 'Afternoon', contact: 'hannah.simone@gmail.com' },
+            { name: 'Ian Somerhalder', image: 'https://randomuser.me/api/portraits/men/5.jpg', description: 'Architecture student focusing on sustainable design.', interests: 'Sustainable Design, Architecture', education: 'BArch in Architecture', location: 'San Diego', availability: 'Evening', contact: 'ian.somerhalder@hotmail.com' },
+            { name: 'Jessica Alba', image: 'https://randomuser.me/api/portraits/women/5.jpg', description: 'Biochemistry major with a focus on molecular biology.', interests: 'Molecular Biology, Biochemistry', education: 'BSc in Biochemistry', location: 'Dallas', availability: 'Morning', contact: 'jessica.alba@gmail.com' },
+            { name: 'Kevin Hart', image: 'https://randomuser.me/api/portraits/men/6.jpg', description: 'Sociology major interested in social research.', interests: 'Social Research, Sociology', education: 'BA in Sociology', location: 'San Jose', availability: 'Afternoon', contact: 'kevin.hart@gmail.com' },
+            { name: 'Laura Prepon', image: 'https://randomuser.me/api/portraits/women/6.jpg', description: 'Philosophy major with an interest in ethics.', interests: 'Ethics, Philosophy', education: 'BA in Philosophy', location: 'Austin', availability: 'Evening', contact: 'laura.prepon@hotmail.com' },
+            { name: 'Matt Damon', image: 'https://randomuser.me/api/portraits/men/7.jpg', description: 'Economics major focusing on economic theory.', interests: 'Economic Theory, Finance', education: 'BA in Economics', location: 'Jacksonville', availability: 'Morning', contact: 'matt.damon@gmail.com' },
+            { name: 'Natalie Portman', image: 'https://randomuser.me/api/portraits/women/7.jpg', description: 'Astrophysics major with a focus on cosmology.', interests: 'Cosmology, Astrophysics', education: 'MSc in Astrophysics', location: 'Columbus', availability: 'Afternoon', contact: 'natalie.portman@gmail.com' },
+            { name: 'Oscar Isaac', image: 'https://randomuser.me/api/portraits/men/8.jpg', description: 'Art History major with a focus on Renaissance art.', interests: 'Renaissance Art, Art History', education: 'BA in Art History', location: 'San Francisco', availability: 'Evening', contact: 'oscar.isaac@gmail.com' },
+            { name: 'Penelope Cruz', image: 'https://randomuser.me/api/portraits/women/8.jpg', description: 'Linguistics major focusing on language acquisition.', interests: 'Language Acquisition, Linguistics', education: 'BA in Linguistics', location: 'Fort Worth', availability: 'Morning', contact: 'penelope.cruz@hotmail.com' },
+            { name: 'Quentin Tarantino', image: 'https://randomuser.me/api/portraits/men/9.jpg', description: 'Film Studies major interested in screenwriting.', interests: 'Screenwriting, Film Studies', education: 'BFA in Film', location: 'Detroit', availability: 'Afternoon', contact: 'quentin.tarantino@gmail.com' },
+            { name: 'Rachel McAdams', image: 'https://randomuser.me/api/portraits/women/9.jpg', description: 'Environmental Science major with a focus on climate change.', interests: 'Climate Change, Environmental Science', education: 'BSc in Environmental Science', location: 'El Paso', availability: 'Evening', contact: 'rachel.mcadams@gmail.com' },
+            { name: 'Steve Carell', image: 'https://randomuser.me/api/portraits/men/10.jpg', description: 'Mechanical Engineering student with a focus on robotics.', interests: 'Robotics, Mechanical Engineering', education: 'BSc in Mechanical Engineering', location: 'Memphis', availability: 'Morning', contact: 'steve.carell@gmail.com' },
+            { name: 'Tina Fey', image: 'https://randomuser.me/api/portraits/women/10.jpg', description: 'Theater major interested in acting and directing.', interests: 'Acting, Directing', education: 'BA in Theater', location: 'Boston', availability: 'Afternoon', contact: 'tina.fey@gmail.com' },
+            { name: 'Uzo Aduba', image: 'https://randomuser.me/api/portraits/women/11.jpg', description: 'Public Health major focusing on epidemiology.', interests: 'Epidemiology, Public Health', education: 'MSc in Public Health', location: 'Seattle', availability: 'Evening', contact: 'uzo.aduba@gmail.com' },
+            { name: 'Vin Diesel', image: 'https://randomuser.me/api/portraits/men/11.jpg', description: 'Business major with a focus on entrepreneurship.', interests: 'Entrepreneurship, Business', education: 'BBA in Business', location: 'Denver', availability: 'Morning', contact: 'vin.diesel@gmail.com' },
+            { name: 'Willem Dafoe', image: 'https://randomuser.me/api/portraits/men/12.jpg', description: 'Education major with a focus on early childhood education.', interests: 'Early Childhood Education, Teaching', education: 'BA in Education', location: 'Washington', availability: 'Afternoon', contact: 'willem.dafoe@gmail.com' },
+            { name: 'Xander Berkeley', image: 'https://randomuser.me/api/portraits/men/13.jpg', description: 'Law student interested in criminal justice.', interests: 'Criminal Justice, Law', education: 'JD in Law', location: 'Nashville', availability: 'Evening', contact: 'xander.berkeley@gmail.com' },
+            { name: 'Yara Shahidi', image: 'https://randomuser.me/api/portraits/women/12.jpg', description: 'Philosophy major with a focus on ethics and social justice.', interests: 'Social Justice, Ethics', education: 'BA in Philosophy', location: 'Baltimore', availability: 'Morning', contact: 'yara.shahidi@gmail.com' },
+            { name: 'Zach Galifianakis', image: 'https://randomuser.me/api/portraits/men/14.jpg', description: 'Statistics major focusing on data analysis.', interests: 'Data Analysis, Statistics', education: 'BSc in Statistics', location: 'Tucson', availability: 'Afternoon', contact: 'zach.galifianakis@gmail.com' },
+            { name: 'Anna Kendrick', image: 'https://randomuser.me/api/portraits/women/13.jpg', description: 'Music major with a focus on vocal performance.', interests: 'Vocal Performance, Music Theory', education: 'BA in Music', location: 'Omaha', availability: 'Evening', contact: 'anna.kendrick@gmail.com' },
+            { name: 'Brad Pitt', image: 'https://randomuser.me/api/portraits/men/15.jpg', description: 'Chemistry major with an interest in physical chemistry.', interests: 'Physical Chemistry, Research', education: 'BSc in Chemistry', location: 'Raleigh', availability: 'Morning', contact: 'brad.pitt@gmail.com' },
+            { name: 'Cate Blanchett', image: 'https://randomuser.me/api/portraits/women/14.jpg', description: 'Literature major with a focus on creative writing.', interests: 'Creative Writing, Literature', education: 'MFA in Creative Writing', location: 'Miami', availability: 'Afternoon', contact: 'cate.blanchett@gmail.com' },
+            { name: 'Daniel Craig', image: 'https://randomuser.me/api/portraits/men/16.jpg', description: 'History major interested in medieval studies.', interests: 'Medieval Studies, History', education: 'BA in History', location: 'Cleveland', availability: 'Evening', contact: 'daniel.craig@gmail.com' },
+            { name: 'Emily Blunt', image: 'https://randomuser.me/api/portraits/women/15.jpg', description: 'Business Administration major focusing on management.', interests: 'Management, Business Administration', education: 'BBA in Business', location: 'Tulsa', availability: 'Morning', contact: 'emily.blunt@gmail.com' },
+            { name: 'Freddie Highmore', image: 'https://randomuser.me/api/portraits/men/17.jpg', description: 'Psychology major with an interest in cognitive psychology.', interests: 'Cognitive Psychology, Research', education: 'BA in Psychology', location: 'Oakland', availability: 'Afternoon', contact: 'freddie.highmore@gmail.com' },
+            { name: 'Gina Rodriguez', image: 'https://randomuser.me/api/portraits/women/16.jpg', description: 'Environmental Studies major focusing on sustainability.', interests: 'Sustainability, Environmental Studies', education: 'BSc in Environmental Studies', location: 'Minneapolis', availability: 'Evening', contact: 'gina.rodriguez@gmail.com' },
+            { name: 'Hugh Jackman', image: 'https://randomuser.me/api/portraits/men/18.jpg', description: 'Finance major interested in investment banking.', interests: 'Investment Banking, Finance', education: 'BSc in Finance', location: 'Kansas City', availability: 'Morning', contact: 'hugh.jackman@gmail.com' },
+            { name: 'Isla Fisher', image: 'https://randomuser.me/api/portraits/women/17.jpg', description: 'Theater Studies major with a focus on performance.', interests: 'Performance, Theater Studies', education: 'BA in Theater Studies', location: 'Atlanta', availability: 'Afternoon', contact: 'isla.fisher@gmail.com' },
+            { name: 'James McAvoy', image: 'https://randomuser.me/api/portraits/men/19.jpg', description: 'Music major focusing on instrumental performance.', interests: 'Instrumental Performance, Music', education: 'BFA in Music', location: 'Colorado Springs', availability: 'Evening', contact: 'james.mcavoy@gmail.com' },
+            { name: 'Kerry Washington', image: 'https://randomuser.me/api/portraits/women/18.jpg', description: 'Law major with a focus on civil rights.', interests: 'Civil Rights, Law', education: 'JD in Law', location: 'Virginia Beach', availability: 'Morning', contact: 'kerry.washington@gmail.com' },
+            { name: 'Liam Hemsworth', image: 'https://randomuser.me/api/portraits/men/20.jpg', description: 'Biochemistry major interested in pharmaceutical research.', interests: 'Pharmaceutical Research, Biochemistry', education: 'MSc in Biochemistry', location: 'Atlanta', availability: 'Afternoon', contact: 'liam.hemsworth@gmail.com' },
+            { name: 'Mila Kunis', image: 'https://randomuser.me/api/portraits/women/19.jpg', description: 'Computer Science major with a focus on software development.', interests: 'Software Development, Programming', education: 'BSc in Computer Science', location: 'Honolulu', availability: 'Evening', contact: 'mila.kunis@gmail.com' },
+            { name: 'Nicolas Cage', image: 'https://randomuser.me/api/portraits/men/21.jpg', description: 'Art major with a focus on modern art.', interests: 'Modern Art, Painting', education: 'BA in Art', location: 'Reno', availability: 'Morning', contact: 'nicolas.cage@gmail.com' },
+            { name: 'Olivia Wilde', image: 'https://randomuser.me/api/portraits/women/20.jpg', description: 'Social Work major focusing on community outreach.', interests: 'Community Outreach, Social Work', education: 'MSW in Social Work', location: 'St. Louis', availability: 'Afternoon', contact: 'olivia.wilde@gmail.com' },
+            { name: 'Paul Rudd', image: 'https://randomuser.me/api/portraits/men/22.jpg', description: 'Psychology major with an interest in developmental psychology.', interests: 'Developmental Psychology, Research', education: 'BA in Psychology', location: 'Baltimore', availability: 'Evening', contact: 'paul.rudd@gmail.com' },
+            { name: 'Quincy Jones', image: 'https://randomuser.me/api/portraits/men/23.jpg', description: 'Music major focusing on composition.', interests: 'Composition, Music Theory', education: 'BA in Music', location: 'Buffalo', availability: 'Morning', contact: 'quincy.jones@gmail.com' },
+            { name: 'Reese Witherspoon', image: 'https://randomuser.me/api/portraits/women/21.jpg', description: 'Law major with a focus on family law.', interests: 'Family Law, Legal Studies', education: 'JD in Law', location: 'Cincinnati', availability: 'Afternoon', contact: 'reese.witherspoon@gmail.com' },
+            { name: 'Samuel L. Jackson', image: 'https://randomuser.me/api/portraits/men/24.jpg', description: 'Political Science major interested in public policy.', interests: 'Public Policy, Political Science', education: 'BA in Political Science', location: 'Pittsburgh', availability: 'Evening', contact: 'samuel.jackson@gmail.com' },
+            { name: 'Tessa Thompson', image: 'https://randomuser.me/api/portraits/women/22.jpg', description: 'Theater Studies major with a focus on directing.', interests: 'Directing, Theater Studies', education: 'BA in Theater Studies', location: 'New Orleans', availability: 'Morning', contact: 'tessa.thompson@gmail.com' },
+            { name: 'Ursula Corbero', image: 'https://randomuser.me/api/portraits/women/23.jpg', description: 'Biomedical Science major focusing on molecular genetics.', interests: 'Molecular Genetics, Biomedical Science', education: 'BSc in Biomedical Science', location: 'Arlington', availability: 'Afternoon', contact: 'ursula.corbero@gmail.com' },
+            { name: 'Vince Vaughn', image: 'https://randomuser.me/api/portraits/men/25.jpg', description: 'Business major with an interest in marketing.', interests: 'Marketing, Business', education: 'BBA in Marketing', location: 'Tampa', availability: 'Evening', contact: 'vince.vaughn@gmail.com' },
+            { name: 'Warren Beatty', image: 'https://randomuser.me/api/portraits/men/26.jpg', description: 'Engineering major focusing on renewable energy.', interests: 'Renewable Energy, Engineering', education: 'BEng in Engineering', location: 'Honolulu', availability: 'Morning', contact: 'warren.beatty@gmail.com' },
+            { name: 'Xena Miller', image: 'https://randomuser.me/api/portraits/women/24.jpg', description: 'Architecture major with an interest in urban planning.', interests: 'Urban Planning, Architecture', education: 'BArch in Architecture', location: 'Cleveland', availability: 'Afternoon', contact: 'xena.miller@gmail.com' },
+            { name: 'Yasmine Bleeth', image: 'https://randomuser.me/api/portraits/women/25.jpg', description: 'Cultural Studies major focusing on media studies.', interests: 'Media Studies, Cultural Studies', education: 'BA in Cultural Studies', location: 'Birmingham', availability: 'Evening', contact: 'yasmine.bleeth@gmail.com' },
+            { name: 'Zoe Saldana', image: 'https://randomuser.me/api/portraits/women/26.jpg', description: 'Film Studies major with a focus on film production.', interests: 'Film Production, Film Studies', education: 'BA in Film Studies', location: 'Boston', availability: 'Morning', contact: 'zoe.saldana@gmail.com' },
+            // Add more profiles as needed...
+        ];
+
+        // Function to render profiles
+        function renderProfiles(profiles) {
+            const profileGrid = document.getElementById('profileGrid');
+            profileGrid.innerHTML = '';
+
+            profiles.forEach(profile => {
+                const profileCard = document.createElement('div');
+                profileCard.className = 'profile-card';
+                profileCard.innerHTML = `
+                    <img src="${profile.image}" alt="${profile.name}" />
+                    <div>
+                        <h3>${profile.name}</h3>
+                        <p>${profile.description}</p>
+                        <p><strong>Interests:</strong> ${profile.interests}</p>
+                        <p><strong>Education:</strong> ${profile.education}</p>
+                        <p><strong>Location:</strong> ${profile.location}</p>
+                        <p><strong>Availability:</strong> ${profile.availability}</p>
+                        <p><strong>Contact:</strong> <a href="mailto:${profile.contact}">${profile.contact}</a></p>
+                        <button onclick="openChat('${profile.name}')">Contact</button>
+                    </div>
+                `;
+                profileGrid.appendChild(profileCard);
+            });
+        }
+
+        // Function to search profiles
+        function searchProfiles() {
+            const name = document.getElementById('nameSearch').value.toLowerCase();
+            const interest = document.getElementById('interestSearch').value.toLowerCase();
+            const education = document.getElementById('educationSearch').value.toLowerCase();
+            const location = document.getElementById('locationSearch').value.toLowerCase();
+
+            const filteredProfiles = profiles.filter(profile =>
+                profile.name.toLowerCase().includes(name) &&
+                profile.interests.toLowerCase().includes(interest) &&
+                profile.education.toLowerCase().includes(education) &&
+                profile.location.toLowerCase().includes(location)
+            );
+
+            renderProfiles(filteredProfiles);
+        }
+
+        // Function to open chatbox
+        function openChat(name) {
+            document.getElementById('chatbox').style.display = 'block';
+            document.getElementById('chatboxHeader').textContent = `Chat with ${name}`;
+        }
+
+        // Function to send a message
+        function sendMessage() {
+            const message = document.getElementById('chatMessage').value;
+            if (message.trim()) {
+                const chatboxBody = document.getElementById('chatboxBody');
+                chatboxBody.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+                document.getElementById('chatMessage').value = '';
+                chatboxBody.scrollTop = chatboxBody.scrollHeight; // Scroll to bottom
+            }
+        }
+
+        // Initial render
+        renderProfiles(profiles);
+    </script>
+</body>
+</html>

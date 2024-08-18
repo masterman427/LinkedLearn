@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Surveys</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #1e90ff;
+            color: #fff;
+            padding: 1.5em;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2em auto;
+            padding: 1.5em;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .survey {
+            margin-bottom: 2em;
+            padding: 1.5em;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .survey h2 {
+            margin-top: 0;
+            color: #1e90ff;
+        }
+        .form-group {
+            margin-bottom: 1.5em;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5em;
+            color: #555;
+            font-size: 1.1em;
+        }
+        .form-group input[type="radio"] {
+            margin-right: 0.5em;
+        }
+        .form-group .options {
+            margin-left: 1.5em;
+        }
+        .form-group button {
+            background-color: #1e90ff;
+            color: #fff;
+            border: none;
+            padding: 0.8em 1.5em;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        .form-group button:hover {
+            background-color: #4682b4;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 2em;
+            background-color: #ddd;
+            color: #333;
+            padding: 0.8em 1.5em;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1.1em;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #ccc;
+        }
+        .question-group {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1em;
+            margin-bottom: 1.5em;
+        }
+        .question-group:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Learning Surveys</h1>
+    </div>
+
+    <div class="container">
+        <div class="survey">
+            <h2>Comprehensive Learning Preferences Survey</h2>
+            <form id="learningSurvey">
+                <!-- 50 Multiple Choice Questions -->
+                
+<!-- Question 1 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>1. What is your preferred method of learning?</label>
+        <div class="options">
+            <input type="radio" id="method1" name="learningMethod" value="Visual">
+            <label for="method1">Visual (e.g., diagrams, charts)</label><br>
+            <input type="radio" id="method2" name="learningMethod" value="Auditory">
+            <label for="method2">Auditory (e.g., lectures, discussions)</label><br>
+            <input type="radio" id="method3" name="learningMethod" value="Kinesthetic">
+            <label for="method3">Kinesthetic (e.g., hands-on activities)</label><br>
+            <input type="radio" id="method4" name="learningMethod" value="Reading/Writing">
+            <label for="method4">Reading/Writing (e.g., notes, reading materials)</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 2 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>2. How do you prefer to receive feedback?</label>
+        <div class="options">
+            <input type="radio" id="feedback1" name="feedback" value="Written">
+            <label for="feedback1">Written feedback</label><br>
+            <input type="radio" id="feedback2" name="feedback" value="Verbal">
+            <label for="feedback2">Verbal feedback</label><br>
+            <input type="radio" id="feedback3" name="feedback" value="Both">
+            <label for="feedback3">Both written and verbal feedback</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 3 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>3. What type of study materials do you prefer?</label>
+        <div class="options">
+            <input type="radio" id="material1" name="studyMaterials" value="Books">
+            <label for="material1">Books</label><br>
+            <input type="radio" id="material2" name="studyMaterials" value="Online Articles">
+            <label for="material2">Online Articles</label><br>
+            <input type="radio" id="material3" name="studyMaterials" value="Videos">
+            <label for="material3">Videos</label><br>
+            <input type="radio" id="material4" name="studyMaterials" value="Interactive Tools">
+            <label for="material4">Interactive Tools</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 4 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>4. How often do you review your notes?</label>
+        <div class="options">
+            <input type="radio" id="review1" name="noteReview" value="Daily">
+            <label for="review1">Daily</label><br>
+            <input type="radio" id="review2" name="noteReview" value="Weekly">
+            <label for="review2">Weekly</label><br>
+            <input type="radio" id="review3" name="noteReview" value="Monthly">
+            <label for="review3">Monthly</label><br>
+            <input type="radio" id="review4" name="noteReview" value="Rarely">
+            <label for="review4">Rarely</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 5 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>5. Do you prefer working alone or in a group?</label>
+        <div class="options">
+            <input type="radio" id="work1" name="workPreference" value="Alone">
+            <label for="work1">Alone</label><br>
+            <input type="radio" id="work2" name="workPreference" value="In a Group">
+            <label for="work2">In a Group</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 6 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>6. What is your ideal study environment?</label>
+        <div class="options">
+            <input type="radio" id="env1" name="studyEnvironment" value="Quiet">
+            <label for="env1">Quiet</label><br>
+            <input type="radio" id="env2" name="studyEnvironment" value="Some Background Noise">
+            <label for="env2">Some Background Noise</label><br>
+            <input type="radio" id="env3" name="studyEnvironment" value="Loud and Busy">
+            <label for="env3">Loud and Busy</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 7 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>7. How do you handle distractions while studying?</label>
+        <div class="options">
+            <input type="radio" id="distraction1" name="distractionHandling" value="Minimize Distractions">
+            <label for="distraction1">Minimize Distractions</label><br>
+            <input type="radio" id="distraction2" name="distractionHandling" value="Use Focus Techniques">
+            <label for="distraction2">Use Focus Techniques</label><br>
+            <input type="radio" id="distraction3" name="distractionHandling" value="Take Regular Breaks">
+            <label for="distraction3">Take Regular Breaks</label><br>
+            <input type="radio" id="distraction4" name="distractionHandling" value="Other">
+            <label for="distraction4">Other</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 8 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>8. How do you prefer to organize your study materials?</label>
+        <div class="options">
+            <input type="radio" id="organize1" name="materialOrganization" value="Digital">
+            <label for="organize1">Digital</label><br>
+            <input type="radio" id="organize2" name="materialOrganization" value="Physical">
+            <label for="organize2">Physical</label><br>
+            <input type="radio" id="organize3" name="materialOrganization" value="Both">
+            <label for="organize3">Both</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 9 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>9. How do you prefer to study for exams?</label>
+        <div class="options">
+            <input type="radio" id="study1" name="examStudy" value="Practice Tests">
+            <label for="study1">Practice Tests</label><br>
+            <input type="radio" id="study2" name="examStudy" value="Review Notes">
+            <label for="study2">Review Notes</label><br>
+            <input type="radio" id="study3" name="examStudy" value="Group Study">
+            <label for="study3">Group Study</label><br>
+            <input type="radio" id="study4" name="examStudy" value="Tutoring">
+            <label for="study4">Tutoring</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 10 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>10. What motivates you to study?</label>
+        <div class="options">
+            <input type="radio" id="motivation1" name="studyMotivation" value="Goals">
+            <label for="motivation1">Goals</label><br>
+            <input type="radio" id="motivation2" name="studyMotivation" value="Grades">
+            <label for="motivation2">Grades</label><br>
+            <input type="radio" id="motivation3" name="studyMotivation" value="Interest">
+            <label for="motivation3">Interest</label><br>
+            <input type="radio" id="motivation4" name="studyMotivation" value="Peer Pressure">
+            <label for="motivation4">Peer Pressure</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 11 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>11. How often do you seek help when you encounter difficulties?</label>
+        <div class="options">
+            <input type="radio" id="help1" name="helpSeeking" value="Always">
+            <label for="help1">Always</label><br>
+            <input type="radio" id="help2" name="helpSeeking" value="Sometimes">
+            <label for="help2">Sometimes</label><br>
+            <input type="radio" id="help3" name="helpSeeking" value="Rarely">
+            <label for="help3">Rarely</label><br>
+            <input type="radio" id="help4" name="helpSeeking" value="Never">
+            <label for="help4">Never</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 12 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>12. What is your preferred format for learning materials?</label>
+        <div class="options">
+            <input type="radio" id="format1" name="materialFormat" value="Text">
+            <label for="format1">Text</label><br>
+            <input type="radio" id="format2" name="materialFormat" value="Audio">
+            <label for="format2">Audio</label><br>
+            <input type="radio" id="format3" name="materialFormat" value="Video">
+            <label for="format3">Video</label><br>
+            <input type="radio" id="format4" name="materialFormat" value="Interactive">
+            <label for="format4">Interactive</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 13 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>13. How do you prefer to set your study goals?</label>
+        <div class="options">
+            <input type="radio" id="goal1" name="goalSetting" value="Short-term">
+            <label for="goal1">Short-term</label><br>
+            <input type="radio" id="goal2" name="goalSetting" value="Long-term">
+            <label for="goal2">Long-term</label><br>
+            <input type="radio" id="goal3" name="goalSetting" value="Both">
+            <label for="goal3">Both</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 14 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>14. How do you usually take notes during lectures?</label>
+        <div class="options">
+            <input type="radio" id="notes1" name="noteTaking" value="Handwritten">
+            <label for="notes1">Handwritten</label><br>
+            <input type="radio" id="notes2" name="noteTaking" value="Typed">
+            <label for="notes2">Typed</label><br>
+            <input type="radio" id="notes3" name="noteTaking" value="Audio Recording">
+            <label for="notes3">Audio Recording</label><br>
+            <input type="radio" id="notes4" name="noteTaking" value="None">
+            <label for="notes4">None</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 15 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>15. What is your preferred method for practicing new skills?</label>
+        <div class="options">
+            <input type="radio" id="practice1" name="skillPractice" value="Repetition">
+            <label for="practice1">Repetition</label><br>
+            <input type="radio" id="practice2" name="skillPractice" value="Application">
+            <label for="practice2">Application</label><br>
+            <input type="radio" id="practice3" name="skillPractice" value="Simulation">
+            <label for="practice3">Simulation</label><br>
+            <input type="radio" id="practice4" name="skillPractice" value="Feedback">
+            <label for="practice4">Feedback</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 16 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>16. How do you prefer to handle challenging topics?</label>
+        <div class="options">
+            <input type="radio" id="challenge1" name="challengeHandling" value="Break Down into Smaller Parts">
+            <label for="challenge1">Break Down into Smaller Parts</label><br>
+            <input type="radio" id="challenge2" name="challengeHandling" value="Seek Help from Others">
+            <label for="challenge2">Seek Help from Others</label><br>
+            <input type="radio" id="challenge3" name="challengeHandling" value="Research More on the Topic">
+            <label for="challenge3">Research More on the Topic</label><br>
+            <input type="radio" id="challenge4" name="challengeHandling" value="Ignore and Move On">
+            <label for="challenge4">Ignore and Move On</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 17 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>17. What time of day are you most productive for studying?</label>
+        <div class="options">
+            <input type="radio" id="time1" name="studyTime" value="Morning">
+            <label for="time1">Morning</label><br>
+            <input type="radio" id="time2" name="studyTime" value="Afternoon">
+            <label for="time2">Afternoon</label><br>
+            <input type="radio" id="time3" name="studyTime" value="Evening">
+            <label for="time3">Evening</label><br>
+            <input type="radio" id="time4" name="studyTime" value="Night">
+            <label for="time4">Night</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 18 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>18. How do you prefer to engage with course content?</label>
+        <div class="options">
+            <input type="radio" id="engage1" name="courseEngagement" value="Interactive Activities">
+            <label for="engage1">Interactive Activities</label><br>
+            <input type="radio" id="engage2" name="courseEngagement" value="Discussion Forums">
+            <label for="engage2">Discussion Forums</label><br>
+            <input type="radio" id="engage3" name="courseEngagement" value="Readings">
+            <label for="engage3">Readings</label><br>
+            <input type="radio" id="engage4" name="courseEngagement" value="Assignments">
+            <label for="engage4">Assignments</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 19 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>19. What type of feedback helps you improve the most?</label>
+        <div class="options">
+            <input type="radio" id="feedbackType1" name="improvementFeedback" value="Detailed Comments">
+            <label for="feedbackType1">Detailed Comments</label><br>
+            <input type="radio" id="feedbackType2" name="improvementFeedback" value="Constructive Criticism">
+            <label for="feedbackType2">Constructive Criticism</label><br>
+            <input type="radio" id="feedbackType3" name="improvementFeedback" value="Positive Reinforcement">
+            <label for="feedbackType3">Positive Reinforcement</label><br>
+            <input type="radio" id="feedbackType4" name="improvementFeedback" value="Peer Reviews">
+            <label for="feedbackType4">Peer Reviews</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 20 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>20. How do you prefer to study for a group project?</label>
+        <div class="options">
+            <input type="radio" id="project1" name="groupProject" value="Divide Tasks">
+            <label for="project1">Divide Tasks</label><br>
+            <input type="radio" id="project2" name="groupProject" value="Collaborate on All Tasks">
+            <label for="project2">Collaborate on All Tasks</label><br>
+            <input type="radio" id="project3" name="groupProject" value="Assign Roles">
+            <label for="project3">Assign Roles</label><br>
+            <input type="radio" id="project4" name="groupProject" value="Work Independently and Combine">
+            <label for="project4">Work Independently and Combine</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 21 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>21. How do you handle complex concepts?</label>
+        <div class="options">
+            <input type="radio" id="concept1" name="complexConcepts" value="Break Down into Smaller Parts">
+            <label for="concept1">Break Down into Smaller Parts</label><br>
+            <input type="radio" id="concept2" name="complexConcepts" value="Seek Clarification from Instructor">
+            <label for="concept2">Seek Clarification from Instructor</label><br>
+            <input type="radio" id="concept3" name="complexConcepts" value="Use Visual Aids">
+            <label for="concept3">Use Visual Aids</label><br>
+            <input type="radio" id="concept4" name="complexConcepts" value="Discuss with Peers">
+            <label for="concept4">Discuss with Peers</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 22 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>22. How do you prefer to set your study schedule?</label>
+        <div class="options">
+            <input type="radio" id="schedule1" name="studySchedule" value="Daily Planner">
+            <label for="schedule1">Daily Planner</label><br>
+            <input type="radio" id="schedule2" name="studySchedule" value="Weekly Planner">
+            <label for="schedule2">Weekly Planner</label><br>
+            <input type="radio" id="schedule3" name="studySchedule" value="Monthly Planner">
+            <label for="schedule3">Monthly Planner</label><br>
+            <input type="radio" id="schedule4" name="studySchedule" value="No Set Schedule">
+            <label for="schedule4">No Set Schedule</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 23 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>23. What type of assignments do you find most engaging?</label>
+        <div class="options">
+            <input type="radio" id="assignment1" name="engagingAssignments" value="Creative Projects">
+            <label for="assignment1">Creative Projects</label><br>
+            <input type="radio" id="assignment2" name="engagingAssignments" value="Research Papers">
+            <label for="assignment2">Research Papers</label><br>
+            <input type="radio" id="assignment3" name="engagingAssignments" value="Case Studies">
+            <label for="assignment3">Case Studies</label><br>
+            <input type="radio" id="assignment4" name="engagingAssignments" value="Group Work">
+            <label for="assignment4">Group Work</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 24 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>24. How do you prefer to learn new technology?</label>
+        <div class="options">
+            <input type="radio" id="tech1" name="techLearning" value="Tutorials">
+            <label for="tech1">Tutorials</label><br>
+            <input type="radio" id="tech2" name="techLearning" value="Hands-on Practice">
+            <label for="tech2">Hands-on Practice</label><br>
+            <input type="radio" id="tech3" name="techLearning" value="Webinars">
+            <label for="tech3">Webinars</label><br>
+            <input type="radio" id="tech4" name="techLearning" value="Guided Workshops">
+            <label for="tech4">Guided Workshops</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 25 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>25. What type of feedback do you find most useful?</label>
+        <div class="options">
+            <input type="radio" id="feedbackUseful1" name="usefulFeedback" value="Detailed Feedback">
+            <label for="feedbackUseful1">Detailed Feedback</label><br>
+            <input type="radio" id="feedbackUseful2" name="usefulFeedback" value="General Comments">
+            <label for="feedbackUseful2">General Comments</label><br>
+            <input type="radio" id="feedbackUseful3" name="usefulFeedback" value="Peer Reviews">
+            <label for="feedbackUseful3">Peer Reviews</label><br>
+            <input type="radio" id="feedbackUseful4" name="usefulFeedback" value="Self-Assessment">
+            <label for="feedbackUseful4">Self-Assessment</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 26 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>26. How do you approach problem-solving tasks?</label>
+        <div class="options">
+            <input type="radio" id="problem1" name="problemSolving" value="Step-by-Step Approach">
+            <label for="problem1">Step-by-Step Approach</label><br>
+            <input type="radio" id="problem2" name="problemSolving" value="Holistic Approach">
+            <label for="problem2">Holistic Approach</label><br>
+            <input type="radio" id="problem3" name="problemSolving" value="Trial and Error">
+            <label for="problem3">Trial and Error</label><br>
+            <input type="radio" id="problem4" name="problemSolving" value="Collaborate with Others">
+            <label for="problem4">Collaborate with Others</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 27 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>27. How often do you update your study strategies?</label>
+        <div class="options">
+            <input type="radio" id="strategy1" name="studyStrategy" value="Regularly">
+            <label for="strategy1">Regularly</label><br>
+            <input type="radio" id="strategy2" name="studyStrategy" value="Occasionally">
+            <label for="strategy2">Occasionally</label><br>
+            <input type="radio" id="strategy3" name="studyStrategy" value="Rarely">
+            <label for="strategy3">Rarely</label><br>
+            <input type="radio" id="strategy4" name="studyStrategy" value="Never">
+            <label for="strategy4">Never</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 28 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>28. What do you find most challenging about studying?</label>
+        <div class="options">
+            <input type="radio" id="challenge1" name="studyChallenges" value="Staying Focused">
+            <label for="challenge1">Staying Focused</label><br>
+            <input type="radio" id="challenge2" name="studyChallenges" value="Managing Time">
+            <label for="challenge2">Managing Time</label><br>
+            <input type="radio" id="challenge3" name="studyChallenges" value="Understanding Material">
+            <label for="challenge3">Understanding Material</label><br>
+            <input type="radio" id="challenge4" name="studyChallenges" value="Applying Concepts">
+            <label for="challenge4">Applying Concepts</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 29 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>29. What type of learning environment do you thrive in?</label>
+        <div class="options">
+            <input type="radio" id="environment1" name="learningEnvironment" value="Structured">
+            <label for="environment1">Structured</label><br>
+            <input type="radio" id="environment2" name="learningEnvironment" value="Flexible">
+            <label for="environment2">Flexible</label><br>
+            <input type="radio" id="environment3" name="learningEnvironment" value="Collaborative">
+            <label for="environment3">Collaborative</label><br>
+            <input type="radio" id="environment4" name="learningEnvironment" value="Independent">
+            <label for="environment4">Independent</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 30 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>30. How do you prioritize your study tasks?</label>
+        <div class="options">
+            <input type="radio" id="priority1" name="studyPriorities" value="By Deadline">
+            <label for="priority1">By Deadline</label><br>
+            <input type="radio" id="priority2" name="studyPriorities" value="By Importance">
+            <label for="priority2">By Importance</label><br>
+            <input type="radio" id="priority3" name="studyPriorities" value="By Difficulty">
+            <label for="priority3">By Difficulty</label><br>
+            <input type="radio" id="priority4" name="studyPriorities" value="Randomly">
+            <label for="priority4">Randomly</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 31 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>31. How do you prefer to handle feedback from peers?</label>
+        <div class="options">
+            <input type="radio" id="peerFeedback1" name="peerFeedback" value="Accept and Implement">
+            <label for="peerFeedback1">Accept and Implement</label><br>
+            <input type="radio" id="peerFeedback2" name="peerFeedback" value="Discuss and Debate">
+            <label for="peerFeedback2">Discuss and Debate</label><br>
+            <input type="radio" id="peerFeedback3" name="peerFeedback" value="Evaluate Critically">
+            <label for="peerFeedback3">Evaluate Critically</label><br>
+            <input type="radio" id="peerFeedback4" name="peerFeedback" value="Ignore">
+            <label for="peerFeedback4">Ignore</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 32 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>32. What motivates you to study?</label>
+        <div class="options">
+            <input type="radio" id="motivation1" name="studyMotivation" value="Personal Goals">
+            <label for="motivation1">Personal Goals</label><br>
+            <input type="radio" id="motivation2" name="studyMotivation" value="Career Advancement">
+            <label for="motivation2">Career Advancement</label><br>
+            <input type="radio" id="motivation3" name="studyMotivation" value="Academic Achievement">
+            <label for="motivation3">Academic Achievement</label><br>
+            <input type="radio" id="motivation4" name="studyMotivation" value="External Rewards">
+            <label for="motivation4">External Rewards</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 33 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>33. How do you approach studying for exams?</label>
+        <div class="options">
+            <input type="radio" id="exam1" name="examApproach" value="Start Early and Review Regularly">
+            <label for="exam1">Start Early and Review Regularly</label><br>
+            <input type="radio" id="exam2" name="examApproach" value="Cram the Night Before">
+            <label for="exam2">Cram the Night Before</label><br>
+            <input type="radio" id="exam3" name="examApproach" value="Study with a Group">
+            <label for="exam3">Study with a Group</label><br>
+            <input type="radio" id="exam4" name="examApproach" value="Use Practice Tests">
+            <label for="exam4">Use Practice Tests</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 34 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>34. How do you prefer to review material?</label>
+        <div class="options">
+            <input type="radio" id="review1" name="materialReview" value="Summarize Key Points">
+            <label for="review1">Summarize Key Points</label><br>
+            <input type="radio" id="review2" name="materialReview" value="Create Flashcards">
+            <label for="review2">Create Flashcards</label><br>
+            <input type="radio" id="review3" name="materialReview" value="Teach the Material to Others">
+            <label for="review3">Teach the Material to Others</label><br>
+            <input type="radio" id="review4" name="materialReview" value="Revisit Lecture Notes">
+            <label for="review4">Revisit Lecture Notes</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 35 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>35. How do you prefer to manage stress during exams?</label>
+        <div class="options">
+            <input type="radio" id="stress1" name="examStress" value="Exercise">
+            <label for="stress1">Exercise</label><br>
+            <input type="radio" id="stress2" name="examStress" value="Meditation">
+            <label for="stress2">Meditation</label><br>
+            <input type="radio" id="stress3" name="examStress" value="Social Support">
+            <label for="stress3">Social Support</label><br>
+            <input type="radio" id="stress4" name="examStress" value="Healthy Eating">
+            <label for="stress4">Healthy Eating</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 36 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>36. How do you prefer to receive instructions for assignments?</label>
+        <div class="options">
+            <input type="radio" id="instructions1" name="assignmentInstructions" value="Written Instructions">
+            <label for="instructions1">Written Instructions</label><br>
+            <input type="radio" id="instructions2" name="assignmentInstructions" value="Verbal Instructions">
+            <label for="instructions2">Verbal Instructions</label><br>
+            <input type="radio" id="instructions3" name="assignmentInstructions" value="Demonstrations">
+            <label for="instructions3">Demonstrations</label><br>
+            <input type="radio" id="instructions4" name="assignmentInstructions" value="Interactive Guides">
+            <label for="instructions4">Interactive Guides</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 37 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>37. How do you prefer to engage with feedback on assignments?</label>
+        <div class="options">
+            <input type="radio" id="feedbackEngage1" name="feedbackEngagement" value="Discuss with Instructor">
+            <label for="feedbackEngage1">Discuss with Instructor</label><br>
+            <input type="radio" id="feedbackEngage2" name="feedbackEngagement" value="Review Written Comments">
+            <label for="feedbackEngage2">Review Written Comments</label><br>
+            <input type="radio" id="feedbackEngage3" name="feedbackEngagement" value="Apply Suggestions Immediately">
+            <label for="feedbackEngage3">Apply Suggestions Immediately</label><br>
+            <input type="radio" id="feedbackEngage4" name="feedbackEngagement" value="Seek Clarification">
+            <label for="feedbackEngage4">Seek Clarification</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 38 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>38. How do you prefer to organize your study materials?</label>
+        <div class="options">
+            <input type="radio" id="organization1" name="studyOrganization" value="Digital Tools">
+            <label for="organization1">Digital Tools</label><br>
+            <input type="radio" id="organization2" name="studyOrganization" value="Physical Folders">
+            <label for="organization2">Physical Folders</label><br>
+            <input type="radio" id="organization3" name="studyOrganization" value="Notebooks">
+            <label for="organization3">Notebooks</label><br>
+            <input type="radio" id="organization4" name="studyOrganization" value="None">
+            <label for="organization4">None</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 39 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>39. How do you prefer to balance studying with other responsibilities?</label>
+        <div class="options">
+            <input type="radio" id="balance1" name="studyBalance" value="Create a Schedule">
+            <label for="balance1">Create a Schedule</label><br>
+            <input type="radio" id="balance2" name="studyBalance" value="Prioritize Tasks">
+            <label for="balance2">Prioritize Tasks</label><br>
+            <input type="radio" id="balance3" name="studyBalance" value="Multitask">
+            <label for="balance3">Multitask</label><br>
+            <input type="radio" id="balance4" name="studyBalance" value="Focus on One Thing at a Time">
+            <label for="balance4">Focus on One Thing at a Time</label>
+        </div>
+    </div>
+</div>
+
+<!-- Question 40 -->
+<div class="question-group">
+    <div class="form-group">
+        <label>40. How do you prefer to handle unexpected study challenges?</label>
+        <div class="options">
+            <input type="radio" id="unexpected1" name="unexpectedChallenges" value="Adapt and Adjust">
+            <label for="unexpected1">Adapt and Adjust</label><br>
+            <input type="radio" id="unexpected2" name="unexpectedChallenges" value="Seek Support">
+            <label for="unexpected2">Seek Support</label><br>
+            <input type="radio" id="unexpected3" name="unexpectedChallenges" value="Reevaluate Priorities">
+            <label for="unexpected3">Reevaluate Priorities</label><br>
+            <input type="radio" id="unexpected4" name="unexpectedChallenges" value="Push Through">
+            <label for="unexpected4">Push Through</label>
+        </div>
+    </div>
+</div>
+
+</form>
+
+                
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <a href="dashboard.html" class="back-button">Back to Dashboard</a>
+    </div>
+</body>
+</html>
