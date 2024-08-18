@@ -1,0 +1,202 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Verdana', sans-serif;
+}
+
+/* Body Background */
+body {
+    background-color: #e0f7fa;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+.header {
+    width: 100%;
+    background: linear-gradient(135deg, #0288d1, #26c6da);
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center; /* Center the header content */
+    align-items: center;
+    color: #ffffff;
+    text-align: center; /* Ensure text is centered */
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.header .logo img {
+    height: 45px;
+    margin-right: 12px;
+}
+
+.header .logo h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Container Styling */
+.container {
+    max-width: 1000px;
+    width: 90%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 34px;
+    color: #0277bd;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #0277bd;
+    padding-bottom: 8px;
+}
+
+/* Controls Styling */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.controls button {
+    background: linear-gradient(135deg, #0277bd, #039be5);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.controls button:hover {
+    background: linear-gradient(135deg, #01579b, #0288d1);
+}
+
+#currentMonthYear {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0288d1;
+}
+
+/* Calendar Styling */
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.calendar div {
+    padding: 20px;
+    background-color: #e1f5fe;
+    border-radius: 8px;
+    font-size: 16px;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.calendar div:hover {
+    transform: translateY(-5px);
+    background-color: #b3e5fc;
+}
+
+.day {
+    font-weight: bold;
+    background-color: #0288d1;
+    color: #913a3a;
+}
+
+.event {
+    background-color: #039be5;
+    color: #fff;
+    padding: 6px;
+    margin-top: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Event Form Styling */
+.event-form {
+    background-color: #e1f5fe;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 25px;
+}
+
+.event-form h2 {
+    margin-bottom: 15px;
+    color: #0277bd;
+    font-size: 22px;
+}
+
+.event-form input[type="date"],
+.event-form input[type="text"] {
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #0288d1;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: calc(100% - 20px);
+    max-width: 380px;
+}
+
+.event-form button {
+    padding: 12px 25px;
+    font-size: 15px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #0277bd, #039be5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.event-form button:hover {
+    background: linear-gradient(135deg, #01579b, #0288d1);
+}
+
+/* Footer Button Styling */
+footer {
+    text-align: center;
+    margin: 25px 0;
+}
+
+footer .btn-return {
+    display: inline-block;
+    background: linear-gradient(135deg, #0277bd, #039be5);
+    color: #ffffff;
+    padding: 12px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+}
+
+footer .btn-return:hover {
+    background: linear-gradient(135deg, #01579b, #0288d1);
+}

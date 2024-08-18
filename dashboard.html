@@ -3,21 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Buddy Dashboard</title>
+    <title>LinkedLearn Dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e0f7fa;
+            background-color: #E0E8FA;
             color: #0277bd;
             margin: 0;
             padding: 0;
         }
 
         .header {
-            background-color: #0288d1;
+            background-color: #012E66;
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5)
+        }
+        
+        .header .logo {
+            font-size: 45px; /* Adjust the font size of the logo text */
+}
+
+        .logo img {
+            
+            height: 45px; /* Adjust the height of the logo as needed */
         }
 
         .nav {
@@ -136,11 +149,20 @@
             width: 100%;
             bottom: 0;
         }
+        .title{
+            color: #012E66;
+            padding: 25px;
+            text-align: center;
+            font-size: 36px;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Study Buddy Dashboard</h1>
+        <div class="logo">
+            <a href="dashboard.html"><img src="images/logo_light.png"></a>
+            LinkedLearn
+        </div>
     </div>
     <div class="nav">
         <a href="home.html">Home</a>
@@ -148,7 +170,11 @@
         <a href="profile.html">My Profile</a>
         <a href="messages.html">Messages</a>
         <a href="survey.html">Surveys</a>
+        <a href="calendar.html">Calendar</a>
         <a href="home.html">Logout</a>
+    </div>
+    <div class = "title">
+        Study Buddy Dashboard
     </div>
     <div class="container">
         <div class="profile">
@@ -159,7 +185,7 @@
                 <p><strong>Major:</strong> Computer Science</p>
                 <p><strong>Interests:</strong> Programming, Data Science, Machine Learning</p>
             </div>
-            <a href="edit-profile.html" class="btn">Edit Profile</a>
+            <a href="profile.html" class="btn">Edit Profile</a>
         </div>
 
         <div class="section study-buddies">

@@ -12,6 +12,25 @@
             margin: 0;
             padding: 0;
         }
+        .header {
+            background-color: #012E66;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5)
+        }
+        
+        .header .logo {
+            font-size: 45px; /* Adjust the font size of the logo text */
+}
+
+        .logo img {
+            
+            height: 45px; /* Adjust the height of the logo as needed */
+        }
         .container {
             width: 80%;
             margin: 0 auto;
@@ -107,6 +126,12 @@
     </style>
 </head>
 <body>
+    <div class="header">
+        <div class="logo">
+            <a href="dashboard.html"><img src="images/logo_light.png"></a>
+            LinkedLearn
+        </div>
+    </div>
     <div class="container">
         <div class="search-container">
             <input type="text" id="nameSearch" placeholder="Search by Name" />

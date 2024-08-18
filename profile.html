@@ -13,9 +13,28 @@
             padding: 0;
         }
         .header {
+            background-color: #012E66;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5)
+        }
+        
+        .header .logo {
+            font-size: 45px; /* Adjust the font size of the logo text */
+}
+
+        .logo img {
+            
+            height: 45px; /* Adjust the height of the logo as needed */
+        }
+        .title {
             background-color: #1e90ff;
             color: #fff;
-            padding: 1em;
+            padding: 10px 50px 10px;
             text-align: center;
         }
         .profile-container {
@@ -108,9 +127,14 @@
 </head>
 <body>
     <div class="header">
-        <h1>Study Buddy Finder</h1>
+        <div class="logo">
+            <a href="dashboard.html"><img src="images/logo_light.png"></a>
+            LinkedLearn
+        </div>
     </div>
-
+    <div class="title">
+        <h1>Your Profile</h1>
+    </div>
     <div class="profile-container">
         <div class="profile-header">
             <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Profile Picture" id="profilePic">

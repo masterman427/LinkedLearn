@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blue Themed Sign Up</title>
+    <title>Sign Up</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,29 @@
             align-items: center;
             height: 100vh;
         }
+        .header {
+            background-color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .header .logo {
+            font-size: 45px; /* Adjust the font size of the logo text */
+}
 
+        .logo img {
+            
+            height: 45px; /* Adjust the height of the logo as needed */
+        }
+        .title {
+            background-color: #1e90ff;
+            color: #fff;
+            padding: 10px 50px 10px;
+            text-align: center;
+        }
         .signup-container {
             background-color: #ffffff; /* White background for contrast */
             padding: 40px;
@@ -80,6 +102,11 @@
 </head>
 <body>
     <div class="signup-container">
+        <div class="header">
+            <div class="logo">
+                <a href="home.html"><img src="images/logo_dark.png"></a>
+            </div>
+        </div>
         <h2>Sign Up</h2>
         <form id="signup-form">
             <input type="text" name="username" placeholder="Username" required>
